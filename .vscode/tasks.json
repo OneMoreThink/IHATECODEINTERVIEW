@@ -1,0 +1,37 @@
+{
+    // This version number is for VS Code's task runner schema.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // A user-friendly name for the task. This appears in VS Code's command palette.
+            "label": "C/C++: Build active file",
+
+            // The type of task. "shell" means it runs a command in the terminal.
+            "type": "shell",
+
+            // The command to execute. Here, it's the clang++ C++ compiler.
+            "command": "clang++",
+
+            // The arguments to pass to the command.
+            "args": [
+                // "-g": Includes debug symbols in the executable. This is ESSENTIAL for debugging.
+                "-g",
+                // "-std=c++17": Specifies that the code should be compiled using the C++17 standard.
+                "-std=c++17",
+                // "${file}": A VS Code variable that automatically uses the path of the currently active file in the editor.
+                "${file}",
+                // "-o": The "output" flag, which tells the compiler where to put the executable.
+                "-o",
+                // "${fileDirname}/${fileBasenameNoExtension}": A variable that creates an output path in the same directory
+                // as the source file, with the same name but without the .cpp extension.
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+
+            // Marks this task as the default build task. You can run it with the shortcut Cmd+Shift+B.
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

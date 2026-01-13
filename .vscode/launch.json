@@ -1,0 +1,41 @@
+{
+    // This version number is for VS Code's debugger configuration schema.
+    "version": "0.2.0",
+    // "configurations" is an array that can hold multiple debugging setups.
+    "configurations": [
+        // This is the configuration for debugging C++.
+        {
+            // The name that appears in the "Run and Debug" dropdown menu.
+            "name": "C/C++: Debug active file",
+            // The type of debugger to use. "cppdbg" is provided by the Microsoft C/C++ extension.
+            "type": "cppdbg",
+            // "launch" means the debugger will start the program itself.
+            "request": "launch",
+            // The path to the executable program to be debugged. This matches the output of our build task in tasks.json.
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            // Any command-line arguments you want to pass to your program when it runs.
+            "args": [],
+            // If set to true, the debugger would stop at the very first line of the program.
+            "stopAtEntry": false,
+            // Sets the current working directory for the program to be the directory of the source file.
+            "cwd": "${fileDirname}",
+            // **This is the key connection.** Before launching, VS Code will run the task with this label from tasks.json.
+            // This ensures your code is always compiled before you debug it.
+            "preLaunchTask": "C/C++: Build active file"
+        },
+        // This is the configuration for debugging Swift.
+        {
+            // The name that appears in the "Run and Debug" dropdown menu.
+            "name": "Swift: Debug active file",
+            // The type of debugger. "lldb" is used by the Swift extension.
+            "type": "lldb",
+            "request": "launch",
+            // For single Swift files, the "program" is the Swift interpreter itself.
+            "program": "/usr/bin/swift",
+            // The arguments passed to the interpreter. Here, we pass the path to the current file.
+            "args": ["${file}"],
+            // Sets the current working directory.
+            "cwd": "${fileDirname}"
+        }
+    ]
+}
